@@ -26,16 +26,39 @@ struct ContentView: View {
         }
     }
     
+    var numberColor: Color {
+        if number >= 1 && number <= 15 {
+            return Color.blue
+        } else if number >= 16 && number <= 30 {
+            return Color.red
+        } else if number >= 31 && number <= 45 {
+            return Color.gray
+        } else if number >= 46 && number <= 60 {
+            return Color.green
+        } else if number >= 61 && number <= 75 {
+            return Color.yellow
+        } else {
+            return Color.black
+        }
+    }
+    
     var body: some View {
         VStack {
+            /*
             Text("Bingo!")
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundColor(Color.orange)
+            */
+            
+            Image("BINGO")
+                .resizable()
+                .scaledToFit()
             
             Text(number == 0 ? "Let's play" : prefixedNumber)
                 .font(.largeTitle)
-                .padding(.vertical, 150.0)
+                .foregroundColor(numberColor)
+                .padding(.vertical, 80.0)
         
             Button(action: {
                 number = Int.random(in: 1...75)
